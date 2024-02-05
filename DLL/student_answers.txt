@@ -1,0 +1,21 @@
+-- Table: public.student_answers
+
+-- DROP TABLE IF EXISTS public.student_answers;
+
+CREATE TABLE IF NOT EXISTS public.student_answers
+(
+    id numeric NOT NULL,
+    answer text COLLATE pg_catalog."default" NOT NULL,
+    key_result numeric NOT NULL,
+    CONSTRAINT student_answers_pkey PRIMARY KEY (id),
+    CONSTRAINT answer_result FOREIGN KEY (key_result)
+        REFERENCES public.results (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.student_answers
+    OWNER to postgres;

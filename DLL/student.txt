@@ -1,0 +1,17 @@
+-- Table: public.student
+
+-- DROP TABLE IF EXISTS public.student;
+
+CREATE TABLE IF NOT EXISTS public.student
+(
+    id numeric NOT NULL,
+    name text COLLATE pg_catalog."default" NOT NULL,
+    date_of_born date NOT NULL,
+    fakulty text COLLATE pg_catalog."default",
+    CONSTRAINT student_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.student
+    OWNER to postgres;

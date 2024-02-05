@@ -1,0 +1,27 @@
+-- Table: public.questions
+
+-- DROP TABLE IF EXISTS public.questions;
+
+CREATE TABLE IF NOT EXISTS public.questions
+(
+    id numeric NOT NULL,
+    question text COLLATE pg_catalog."default" NOT NULL,
+    answer_1 text COLLATE pg_catalog."default" NOT NULL,
+    answer_2 text COLLATE pg_catalog."default" NOT NULL,
+    answer_3 text COLLATE pg_catalog."default",
+    answer_4 text COLLATE pg_catalog."default",
+    answer_5 text COLLATE pg_catalog."default",
+    correct_answer text COLLATE pg_catalog."default" NOT NULL,
+    key_of_test numeric NOT NULL,
+    CONSTRAINT questions_pkey PRIMARY KEY (id),
+    CONSTRAINT constrains_question_answer FOREIGN KEY (key_of_test)
+        REFERENCES public.tests (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.questions
+    OWNER to postgres;
